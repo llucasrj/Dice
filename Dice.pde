@@ -16,8 +16,8 @@ void draw() {
   background(80,133,188);
   for (int i = 0; i < dice.length; i++) { 
     dice[i].gravity();
-    dice[i].roll();
-    dice[i].slow();
+    dice[i].side();
+    dice[i].bounce();
   }
   fby = fby + sy;                         
   sy = sy + 0.15;
@@ -60,7 +60,7 @@ class Die {
     }
     }
 
-   void roll() {                                         
+   void side() {                                         
       if (roll == 1) {
         fill(255);
         rect(ballX, ballY, 50, 50, 20);
@@ -113,7 +113,7 @@ class Die {
         ellipse(ballX+37, ballY+40, 10, 10);
       }
     }
-    void slow(){
+    void bounce(){
       if(count == 2)                      
         slow = 10;
       if(count == 3)
