@@ -6,7 +6,7 @@ int c = 0;
 
 void setup() {
   size(600, 600);
-  for (int i = 0; i < dice.length; i++) { // creating dice
+  for (int i = 0; i < dice.length; i++) { 
     dice[i] = new Die(0, 0);
     score += dice[i].roll;
   }
@@ -14,25 +14,25 @@ void setup() {
 
 void draw() {
   background(80,133,188);
-  for (int i = 0; i < dice.length; i++) { //drawing dice
+  for (int i = 0; i < dice.length; i++) { 
     dice[i].gravity();
     dice[i].roll();
     dice[i].slow();
   }
-  fby = fby + sy;                         //timer until score appears
+  fby = fby + sy;                         
   sy = sy + 0.15;
   if (fby >= 550) {
     sy = (float)Math.random()-10;
     c++;
   }
-  if (c > 6) {                            //score
+  if (c > 6) {                            
     fill(255);
     textSize(30);
     text("Score: " + score, 220, 170);
   }
 }
 
-class Die {                              //Die class
+class Die {                              
   float ballX, ballY, speedX, speedY;
   int roll, count, slow;
   Die(int x, int y) {
@@ -46,21 +46,21 @@ class Die {                              //Die class
   }
 
   void gravity() {                       
-    ballY = ballY + speedY;             //Gravity
+    ballY = ballY + speedY;             
     speedY = speedY + 0.15;            
     ballX = ballX + speedX;
-    if (ballX >= 550)                   //Bouncing off walls
+    if (ballX >= 550)                   
       speedX = -(speedX);
     if (ballX <=0)
       speedX = -(speedX);
-    if (ballY >= 550) {                 //Bouncing off floor
+    if (ballY >= 550) {                 
       speedY = (float)(Math.random()*2)-slow; 
       speedX = random(-5, 5);
       count++;
     }
     }
 
-   void roll() {                         //Sides of dice                 
+   void roll() {                                         
       if (roll == 1) {
         fill(255);
         rect(ballX, ballY, 50, 50, 20);
@@ -114,7 +114,7 @@ class Die {                              //Die class
       }
     }
     void slow(){
-      if(count == 2)                      //Slowing bouncing
+      if(count == 2)                      
         slow = 10;
       if(count == 3)
         slow = 9;
@@ -122,7 +122,7 @@ class Die {                              //Die class
         slow = 6;
       if(count == 5)
         slow = 5;
-      if (count > 6) {                    //Stopping bouncing
+      if (count > 6) {                    
         speedY = 0;
         speedX = 0;
       }
